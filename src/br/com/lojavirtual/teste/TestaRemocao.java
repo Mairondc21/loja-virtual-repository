@@ -9,7 +9,7 @@ public class TestaRemocao {
         ) {
             try (PreparedStatement stm = con.prepareStatement("DELETE FROM PRODUTO WHERE ID > ?");
             ) {
-                stm.setInt(1, 2);
+                stm.setInt(1, 3);
                 stm.execute();
 
                 Integer linhasModificadas = stm.getUpdateCount();
