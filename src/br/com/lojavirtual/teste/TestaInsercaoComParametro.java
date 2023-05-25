@@ -1,19 +1,20 @@
 package br.com.lojavirtual.teste;
 
+import br.com.lojavirtual.factory.ConnectionFactory;
+
 import java.sql.*;
 
 public class TestaInsercaoComParametro {
     public static void main(String[] args) throws SQLException {
-        String nome = "Mouse '";
-        String descricao = "Mouse sem fio";
+
         ConnectionFactory factory = new ConnectionFactory();
-        try (Connection con = factory.recuperarConexao();
+        try (Connection con = factory.recuperarConexao()
         ) {
             con.setAutoCommit(false);
 
             try (
                     PreparedStatement stm = con.prepareStatement("INSERT INTO PRODUTO (NOME,DESCRICAO) VALUES (?,?)",
-                            Statement.RETURN_GENERATED_KEYS);
+                            Statement.RETURN_GENERATED_KEYS)
             ) {
 
                 adicionarVariavel("SmartTv", "45 polegadas", stm);
@@ -27,7 +28,7 @@ public class TestaInsercaoComParametro {
                 System.out.println("ROLLBACK EXECUTADO");
                 con.rollback();
             }
-            con.close();
+
 
         }
     }
@@ -38,7 +39,7 @@ public class TestaInsercaoComParametro {
 
         stm.execute();
 
-        try (ResultSet rst = stm.getGeneratedKeys();
+        try (ResultSet rst = stm.getGeneratedKeys()
 
         ) {
             while (rst.next()) {

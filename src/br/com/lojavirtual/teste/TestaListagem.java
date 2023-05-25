@@ -1,5 +1,7 @@
 package br.com.lojavirtual.teste;
 
+import br.com.lojavirtual.factory.ConnectionFactory;
+
 import java.sql.*;
 
 
