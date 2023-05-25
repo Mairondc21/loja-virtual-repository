@@ -54,8 +54,8 @@ public class ProdutoDAO {
         String sql = "SELECT ID,NOME,DESCRICAO FROM PRODUTO WHERE CATEGORIA_ID = ?";
 
         try(PreparedStatement pstm = connection.prepareStatement(sql)){
-            pstm.execute();
             pstm.setInt(1,lc.getId());
+            pstm.execute();
 
             try (ResultSet rst = pstm.getResultSet()){
                 while(rst.next()){

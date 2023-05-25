@@ -8,8 +8,8 @@ public class TestaInsercaoComParametro {
     public static void main(String[] args) throws SQLException {
 
         ConnectionFactory factory = new ConnectionFactory();
-        try (Connection con = factory.recuperarConexao()
-        ) {
+        Connection con = factory.recuperarConexao();
+        try (con) {
             con.setAutoCommit(false);
 
             try (
